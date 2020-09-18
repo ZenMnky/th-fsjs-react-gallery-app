@@ -21,7 +21,7 @@ export default class App extends Component {
             loading: true,
             searchTerm: '',
             photos: [],
-            ar15: [],
+            monkey: [],
             mountains: [],
             overlanding: []
             
@@ -30,7 +30,7 @@ export default class App extends Component {
     
     // Retreive and store pre-made search routes
     componentDidMount() {
-        this.performSearch('ar15');
+        this.performSearch('monkey');
         this.performSearch('mountains');
         this.performSearch('overlanding');
     }
@@ -41,7 +41,7 @@ export default class App extends Component {
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&format=json&nojsoncallback=1&per_page=24`)
             .then(response => {
-                if (query === 'ar15' || query === 'mountains' || query === 'overlanding'){
+                if (query === 'monkey' || query === 'mountains' || query === 'overlanding'){
                     this.setState({
                         [query]: response.data.photos.photo,
                         loading: false
@@ -99,12 +99,12 @@ export default class App extends Component {
                                 />)
                             } } 
                         />
-                        <Route path='/ar15' render={ (props) => {
+                        <Route path='/monkey' render={ (props) => {
                             return (
                                 <PhotoContainer 
                                     {...props}
-                                    data={this.state.ar15} 
-                                    searchTerm='ar15' 
+                                    data={this.state.monkey} 
+                                    searchTerm='monkey' 
                                     loading={this.state.loading}
                                 />)
                             } } 
