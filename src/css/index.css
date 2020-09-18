@@ -123,3 +123,10 @@ input {
     width: 100px;
   }
 }
+
+.icon-gif {
+  font-size: 6em;
+  margin-bottom: 0;
+  color: #3f4850;
+  display: block;
+}

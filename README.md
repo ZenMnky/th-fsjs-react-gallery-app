@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## App use
+
+- Create `src\config.js` with your [Flickr API key](https://www.flickr.com/services/api/misc.api_keys.html)<br />
+
+    - File should look like: <br />
+        ```
+        const apiKey = 'YOUR API KEY';
+        export default apiKey;
+        ```
+
+- Install dependencies with `npm i`
+
+- Start program with `npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -17,8 +17,11 @@
 .env.development.local
 .env.test.local
 .env.production.local
+config.js
 No-Results-Layout.png
 Results-Layout.png
+*.zip
+project-log.md
 
 npm-debug.log*
 yarn-debug.log*
