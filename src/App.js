@@ -19,16 +19,16 @@ export default class App extends Component {
         super();
         this.state = {
             loading: true,
-            searchTerm: '',
-            photos: [],
-            monkey: [],
-            mountains: [],
-            overlanding: []
+            searchTerm: '', 
+            photos: [], // for searched images
+            monkey: [], // default images to show upon mounting
+            mountains: [], // default images to show upon mounting
+            overlanding: [] // default images to show upon mounting
             
         };
     }
     
-    // Retreive and store pre-made search routes
+    // Retreive and store pre-made, default search routes
     componentDidMount() {
         this.performSearch('monkey');
         this.performSearch('mountains');
@@ -41,6 +41,8 @@ export default class App extends Component {
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&format=json&nojsoncallback=1&per_page=24`)
             .then(response => {
+                // If query is one of the defaults, then display the relative stored-data from state
+                // If not, store the new photo data in the photos key and update the value of state's 'searchTerm' key
                 if (query === 'monkey' || query === 'mountains' || query === 'overlanding'){
                     this.setState({
                         [query]: response.data.photos.photo,
@@ -64,7 +66,7 @@ export default class App extends Component {
      * https://stackoverflow.com/questions/43351752/react-router-changes-url-but-not-view
      */
     render() {
-        console.log(this.state.photos);    
+            
         return (
         <div className='container'>
             <Router>
@@ -110,7 +112,8 @@ export default class App extends Component {
                             } } 
                         />
                         {/* Dynamic Search Route */}
-                        <Route path={'/search/:term'} render={ (props) => {
+                        <Route path={'/search/:searchTerm'} render={ (props) => {
+                                
                                 return( 
                                     <PhotoContainer 
                                         {...props}
