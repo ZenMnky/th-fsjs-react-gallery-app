@@ -5,6 +5,7 @@ import Loading from '../Loading';
 
 
 const PhotoContainer = (props) => {
+    console.log(props);
     const results = props.data;
     let photos;
 
