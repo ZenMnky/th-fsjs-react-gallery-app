@@ -1,5 +1,7 @@
 # Photo Search and Gallery App made with React & Flickr API
 
+Developed by ZenMnky
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## App use

@@ -37,7 +37,6 @@ export default class App extends Component {
 
 
     performSearch = (query) => {
-        // this.setState({loading: true});
 
         axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&format=json&nojsoncallback=1&per_page=24`)
             .then(response => {
@@ -114,18 +113,18 @@ export default class App extends Component {
                         />
 
                         {/* Dynamic Search Route */}
-                        <Route path={'/search/:searchTerm'} render={ ({match}) => {
+                        <Route path={'/search/:searchTerm'} render={ ({match}, props) => {
                                 this.performSearch(match.params.searchTerm)
 
                                 return( 
                                     <PhotoContainer 
-                                        
+                                        {...props}
                                         data={this.state.photos}
                                         searchTerm={this.state.searchTerm}
                                         loading={this.state.loading}
                                     />)
                             }} />
-                            
+
                         {/* Error/Not-Found Route(s) */}
                         <Route component={NotFound} />
                     </Switch>                          
